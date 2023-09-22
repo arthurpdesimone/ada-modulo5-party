@@ -39,4 +39,10 @@ public class PartyController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity updateParty(@PathVariable Long id,@Valid @RequestBody Party party){
+        Party p = partyService.updateParty(id,party);
+        return ResponseEntity.ok(p);
+    }
 }

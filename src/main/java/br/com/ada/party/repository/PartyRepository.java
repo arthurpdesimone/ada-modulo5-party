@@ -12,4 +12,5 @@ public interface PartyRepository extends JpaRepository<Party,Long> {
 
     @Override
     void deleteById(Long id);
+
 }

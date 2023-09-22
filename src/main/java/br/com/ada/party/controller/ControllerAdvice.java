@@ -1,5 +1,6 @@
 package br.com.ada.party.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,4 +17,10 @@ public class ControllerAdvice {
     public ResponseEntity partyInvalidException(WebRequest request) {
         return ResponseEntity.badRequest().body("Argumentos invalidos informados");
     }
+    @ExceptionHandler(value = {EntityNotFoundException.class})
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ResponseEntity entityNotFound(WebRequest request) {
+        return ResponseEntity.notFound().build();
+    }
+
 }
