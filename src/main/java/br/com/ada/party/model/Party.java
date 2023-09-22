@@ -1,11 +1,15 @@
 package br.com.ada.party.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -15,8 +19,10 @@ public class Party {
     @GeneratedValue
     private Long id;
 
+    @NotNull(message = "Nome não pode ser vazio")
     private String name;
 
-    @FutureOrPresent(message = "A data tem que ser maior que o dia de hoje")
-    private LocalDateTime dateTime;
+    @Column(columnDefinition = "DATE")
+    @NotNull(message = "Data não pode ser vazia")
+    private LocalDate date;
 }
