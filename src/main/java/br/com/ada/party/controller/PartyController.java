@@ -29,4 +29,14 @@ public class PartyController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteParty(@PathVariable Long id){
+        Optional<Party> party = partyService.getParty(id);
+        if(party.isPresent()){
+            partyService.deleteParty(id);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

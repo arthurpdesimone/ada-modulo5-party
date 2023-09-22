@@ -9,4 +9,7 @@ import java.util.Optional;
 @Repository
 public interface PartyRepository extends JpaRepository<Party,Long> {
     Optional<Party> findById(Long id);
+
+    @Override
+    void deleteById(Long id);
 }

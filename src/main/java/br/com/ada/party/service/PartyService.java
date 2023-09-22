@@ -19,4 +19,8 @@ public class PartyService {
     public Optional<Party> getParty(Long id){
         return partyRepository.findById(id);
     }
+
+    public void deleteParty(Long id){
+        partyRepository.deleteById(id);
+    }
 }
