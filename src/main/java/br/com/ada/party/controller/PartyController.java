@@ -1,6 +1,8 @@
 package br.com.ada.party.controller;
 
 import br.com.ada.party.model.Party;
+import br.com.ada.party.repository.DocumentRepository;
+import br.com.ada.party.service.DocumentService;
 import br.com.ada.party.service.PartyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,12 @@ public class PartyController {
     @Autowired
     private PartyService partyService;
 
+    @Autowired
+    private DocumentService documentService;
+
     @PostMapping
     public ResponseEntity<Party> createParty(@Valid @RequestBody Party party){
+        documentService.saveDocument(party.getDocuments());
         partyService.saveParty(party);
         return ResponseEntity.ok(party);
     }

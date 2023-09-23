@@ -1,16 +1,17 @@
 package br.com.ada.party.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,4 +26,8 @@ public class Party {
     @Column(columnDefinition = "DATE")
     @NotNull(message = "Data não pode ser vazia")
     private LocalDate date;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @NotNull
+    private List<Document> documents;
 }
