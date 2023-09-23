@@ -28,6 +28,6 @@ public class Party {
     private LocalDate date;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @NotNull
+    @NotNull(message = "Documentos não podem ser nulos")
     private List<Document> documents;
 }

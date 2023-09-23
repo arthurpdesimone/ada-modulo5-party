@@ -15,22 +15,22 @@ public class Document {
     @GeneratedValue
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Versão do documento não pode ser nula")
     private Long version;
 
-    @NotNull
+    @NotNull(message = "Tipo do documento não pode ser nulo")
     private FinancialDocumentTypeValues type;
 
-    @NotNull
+    @NotNull(message = "Nome do documento não pode ser nula")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Data de expedição do documento não pode ser nula")
     private LocalDate date;
 
-    @NotNull
+    @NotNull(message = "Data de expiração do documento não pode ser nula")
     private LocalDate expirationDate;
 
-    @NotNull
+    @NotNull(message = "Descrição do documento não pode ser nula")
     private String description;
 
 }
