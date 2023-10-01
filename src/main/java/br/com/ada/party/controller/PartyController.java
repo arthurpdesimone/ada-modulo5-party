@@ -1,5 +1,6 @@
 package br.com.ada.party.controller;
 
+import br.com.ada.party.exception.InvalidTypeException;
 import br.com.ada.party.model.Party;
 import br.com.ada.party.repository.DocumentRepository;
 import br.com.ada.party.service.DocumentService;
@@ -23,7 +24,7 @@ public class PartyController {
     private DocumentService documentService;
 
     @PostMapping
-    public ResponseEntity<Party> createParty(@Valid @RequestBody Party party){
+    public ResponseEntity<Party> createParty(@Valid @RequestBody Party party) throws InvalidTypeException {
         log.info("Create Party [POST] {}",party.toString());
         documentService.saveDocument(party.getDocuments());
         partyService.saveParty(party);

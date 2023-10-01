@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
@@ -18,7 +19,9 @@ import java.util.List;
 
 @Data
 @Entity
+@Slf4j
 public class Party {
+
     @Id
     @GeneratedValue
     private Long id;

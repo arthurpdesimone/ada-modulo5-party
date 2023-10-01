@@ -1,5 +1,6 @@
 package br.com.ada.party.controller;
 
+import br.com.ada.party.exception.InvalidTypeException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -29,6 +30,11 @@ public class ControllerAdvice {
         List<String> errors = ex.getBindingResult().getFieldErrors()
                 .stream().map(FieldError::getDefaultMessage).collect(Collectors.toList());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidTypeException.class)
+    public ResponseEntity<String> invalidTypeExceptionHandler(InvalidTypeException ex) {
+        return ResponseEntity.badRequest().body("Tipo inválido de entidade com relação aos documentos informados");
     }
 
     @ExceptionHandler(value = ConstraintViolationException.class)
