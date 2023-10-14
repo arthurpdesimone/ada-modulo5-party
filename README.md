@@ -1,5 +1,9 @@
 # ada-modulo5
-Repositório de projeto do módulo 5 da Ada
+O projeto é composto por 2 reposítórios:
+1. O que foi informado na entrega do projeto, que é do microsserviço referente a Party:
+https://github.com/arthurpdesimone/ada-modulo5-party.git
+2. E pelo reposítorio referente ao microsserviço Account/Transaction
+https://github.com/EvertonAndre/microservice-ada-account.git
 
 O projeto tem como objetivo modelar uma aplicação de instituição financeira utilizando a arquitetura BIAN.
 
